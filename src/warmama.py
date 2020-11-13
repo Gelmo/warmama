@@ -603,7 +603,13 @@ class Warmama(object):
 			# remove sessions_players w/purgable=1 & server=this
 			self.dbHandler.RemovePurgables( ssession )
 			
-			gametype = gametype.decode(encoding="utf-8", errors="strict")
+			try : gametype = gametype.decode(encoding="utf-8", errors="strict")
+			except AttributeError:
+				if isinstance(gametype, str) :
+					pass
+				else :
+					self.log( "MatchReport: gametype cannot be decoded, setting gametype to invalid")
+					gametype = "invalid"
 			output = ( '%s ' % (gametype) ).join( [ '%d %d ' % (x[0],x[1]) for x in ratings ] )
 			# do we have some problems with this?
 			self.log( "MatchReport output: %s" % output )
