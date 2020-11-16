@@ -606,7 +606,7 @@ class Warmama(object):
 			try : gametype = gametype.decode(encoding="utf-8", errors="strict")
 			except AttributeError:
 				if isinstance(gametype, str) :
-					self.log( "MatchReport: gametype is already str: gametype is %s" % ( gametype ) ))
+					self.log( "MatchReport: gametype is already str: gametype is %s" % ( gametype ) )
 					pass
 				else :
 					self.log( "MatchReport: gametype cannot be decoded, setting gametype to invalid")
